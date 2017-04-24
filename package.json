@@ -1,0 +1,7 @@
+{
+  "name": "pixfinder_example",
+  "version": "0.0.1",
+  "dependencies": {
+    "pixfinder": "^0.2.4"
+  }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example</title>
+</head>
+<body>
+    <img id="img" src="images/planes.jpg">
+    <canvas id="canv" width="500" height="374"></canvas>
+
+    <script src="node_modules/pixfinder/dist/pixfinder.min.js"></script>
+    <script>
+        var img = document.getElementById('img');
+
+        pix.util.dom.onload(img, function() {
+            var planes = pix.findAll({
+                img: img,
+                distance: 5,
+                colors: ['eff1f0'],
+                clearNoise: 50
+            });
+//            document.getElementById('count').innerHTML = planes.length;
+            planes.forEach(draw);
+        });
+
+        function draw(plane) {
+            var ctx = document.getElementById("canv").getContext("2d");
+            ctx.beginPath();
+            plane.forEach(function(point) {
+                ctx.arc(point.x, point.y, 1, 0, 2 * Math.PI);
+            });
+            ctx.stroke();
+            ctx.closePath();
+        }
+    </script>
+</body>
+</html>
